@@ -8,7 +8,21 @@ import os
 import pygame
 from control import *
 from crawler import bcrawler
-os.system('python3 server.py & ')
+import sys
+try:
+    os.system('python3 server.py & ')
+except:
+    try:
+        os.system('python server.py & ')
+    except:
+        print('MPlayer was unable to find python compiler in ur computer...')
+        p_path = input('Enter the path where ur python compiler is stored :- ')
+        cmd = f'{p_path} server.py & '
+        try:
+            os.system(cmd)
+        except:
+            print(f"Didn't found python compiler at {p_path}\nExiting...\n")
+            sys.exit()
 count = 0
 current_song = ''
 ftime=True
